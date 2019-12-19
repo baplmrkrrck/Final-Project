@@ -3,7 +3,7 @@ import pymysql
 
 
 
-conn = pymysql.connect(host='mysql.clarksonmsda.org', port=3306, user='palmerba', passwd='1Netherspell', db='palmerba') #setup our credentials
+conn = pymysql.connect(host='mysql.clarksonmsda.org', port=3306, user='palmerba', passwd='', db='palmerba') #setup our credentials
 cur = conn.cursor()
 
 print "Beginning Setup"

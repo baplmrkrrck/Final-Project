@@ -5,7 +5,7 @@ import numpy as np
 import random
 import matplotlib.pyplot as plt
 
-conn = pymysql.connect(host='mysql.clarksonmsda.org', port=3306, user='palmerba', passwd='1Netherspell', db='palmerba') #setup our credentials
+conn = pymysql.connect(host='mysql.clarksonmsda.org', port=3306, user='palmerba', passwd='', db='palmerba') #setup our credentials
 cur = conn.cursor()
 
 r = requests.get("http://www.nfl.com/schedules")
@@ -28,7 +28,7 @@ for line in lines:
 
 for match_up in match_ups:
     print match_up["Home"] + " vs " + match_up["Away"]
-    
+
 games_headers = ['Rush_Attempts', 'Rush_Yards', 'Rush_TDs', 'Passing_Completions', 'Passing_Attempts', 'Pass_Yards', 'Pass_TDs', 'Interceptions', 'Sacks_Allowed', 'Sacked_Yards', 'Fumbles', 'Penalties', 'Penalty_Yards']
 games_select_query = '''SELECT * FROM (SELECT id, {field} FROM palmerba_nfl_game_offense as off WHERE Team_Name LIKE %s) AS Offense UNION (SELECT id, {field} FROM palmerba_nfl_game_defense as def WHERE Team_Name LIKE %s) '''
 time_query = '''SELECT id, `Time_Of_Possession` FROM palmerba_nfl_game_offense WHERE Team_Name LIKE %s '''
